@@ -74,6 +74,7 @@
 \input{ANA-HDBS-2019-04-INT1-metadata}
 % Author and title for the PDF file
 \hypersetup{pdftitle={ATLAS document},pdfauthor={The ATLAS Collaboration}}
+\usepackage{multirow}
 
 %-------------------------------------------------------------------------------
 % Content
@@ -88,40 +89,30 @@
 %\PrintAtlasContribute{0.30}
 %\clearpage
 
-%-------------------------------------------------------------------------------
-\section{Introduction}
-\label{sec:intro}
-%-------------------------------------------------------------------------------
-
-Place your introduction here.
-
-
-%-------------------------------------------------------------------------------
-\section{Analysis}
-\label{sec:analysis}
-%-------------------------------------------------------------------------------
-
-You can find some text snippets that can be used in papers in \texttt{template/atlas-snippets.tex}.
-Some of the snippets need the \texttt{jetetmiss} option passed to \texttt{atlasphysics}.
-%\input{atlas-snippets}
-
-
-%-------------------------------------------------------------------------------
-\section{Results}
-\label{sec:result}
-%-------------------------------------------------------------------------------
-
-Place your results here.
-
-% All figures and tables should appear before the summary and conclusion.
-% The package placeins provides the macro \FloatBarrier to achieve this.
-% \FloatBarrier
-
-
-%-------------------------------------------------------------------------------
-\section{Conclusion}
-\label{sec:conclusion}
-%-------------------------------------------------------------------------------
+% Tex for mainbody
+\clearpage
+%\input{Tex/Status.tex}
+\clearpage
+\input{Tex/Introduction.tex}
+\clearpage
+\input{Tex/DataSetsAndSimulation.tex}
+\clearpage
+\input{Tex/ObjectSelection.tex}
+\clearpage
+\input{Tex/EventSelectionAndSignalRegion.tex}
+\clearpage
+\input{Tex/NonpromptBkgestimates.tex}
+\clearpage
+%\input{Tex/PromptBkgValidation.tex}
+%\clearpage
+\input{Tex/SystematicUncertainty.tex}
+\clearpage
+\input{Tex/SignalRegionObservations.tex}
+\clearpage
+\input{Tex/Results.tex}
+\clearpage
+\input{Tex/Conclusion.tex}
+\clearpage
 
 Place your conclusion here.
 

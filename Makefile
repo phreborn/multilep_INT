@@ -231,3 +231,4 @@ cleanall: clean cleanpdf cleanps
 cleanepstopdf: $(EPSTOPDFFILES)
 	@echo "Removing PDF files made automatically from EPS files"
 	-rm $^
+

@@ -1,0 +1,78 @@
+\section{Data and Monte Carlo samples}
+\label{sec:dataset}
+This analysis uses 139~fb$^{-1}$ of data collected from proton-proton collision recorded by the ATLAS 
+detector at $\sqrt{s}=13$ TeV during 2015-2018. The data set has been collected with a 
+bunch crossing of 25 ns, IBL on, and verifying data quality cuts namely which must be in the
+recommended Good Run List.
+%\footnote{For 2015 dataset:
+%\textit{data15\_13TeV.periodAllYear\_DetStatus-v79-repro20-02\_DQDefects-00-02-02\_PHYS\_StandardGRL\_All\_Good\_25ns.xml};
+%for 2016 dataset: 
+%\textit{data16\_13TeV.periodAllYear\_DetStatus-v88-pro20-21\_DQDefects-00-02-04\_PHYS\_StandardGRL\_All\_Good\_25ns.xml} \\}.  
+
+The analysis uses data being prepared with \verb|xAOD| format and further produced to \verb|DxAOD| 
+format using \verb|HIGG8D1| derivation framework. This \verb|xAOD| to \verb|DxAOD| derivation 
+provides a reduction specifically for the \tth events with multileptons in the final states. 
+The total size of data set has been reduced to 3.6 \% for simulated \ttbar 
+events and 0.1\% for collision data set. The size reduction is the result of applying 
+smart slimming (remove un-needed variables), thinning (remove entire objects from events) and 
+additional skimming on both collision dataset and MC samples. The skimming in \verb|HIGG8D1| derivations consists of removing an event if 
+it does not fulfil the following selection: 
+\begin{itemize}
+  \item at least two light leptons passing loose identification criteria with leading lepton $p_{T}>$ 15 GeV and subleading
+  lepton $p_{T}>$ 5GeV, within $|\eta|<$ 2.6
+  \item at least one light lepton passing loose identification criteria with $p_{T}>$ 15 GeV and $|\eta|<$ 2.6, and at least
+  two hadronic taus. The tau lepton has to pass \verb|JetBDTSigLoose| requirement with $p_{T}>$ 15 GeV, its charge must be
+  one and it must have one or three associated tracks.
+\end{itemize}
+
+\subsection{Monte Carlo samples}
+\label{subsec:ms}
+
+\begin{table}
+\begin{center}
+{\small
+\setlength\tabcolsep{1.5pt}
+\begin{tabular}{llllll}
+\hline\hline
+Process & Generator & Parton Shower & PDF & Tune  \\
+& (alternative) & (alternative) & & \\
+\hline
+\ttH & \textsc{Powheg-BOX} \cite{powhegtt}  & \textsc{Pythia} 8\ & NNPDF 3.0 NLO \cite{Ball:2014uwa}/ & A14 \\
+     &                                         &                                       & NNPDF 2.3 LO \cite{Ball:2012cx} \\
+     & (-) & (\textsc{Herwig++}) &  \\
+$tHqb$ & \textsc{MG5\_aMC} & \textsc{Pythia} 8 & CT10 \cite{ct10} & A14  & \\
+$tHW$ & \textsc{MG5\_aMC} & \textsc{Herwig++}  & CT10 & UE-EE-5   \cite{Seymour:2013qka}   \\
+& & & /CTEQ6L1 \cite{cteq6l1,cteq6}  \\
+%$\ttbar W$ & \textsc{MG5\_aMC} & \textsc{Pythia} 8 & NNPDF 3.0 NLO & A14   \\
+%& & & /2.3 LO \\
+$\ttbar W$ & \textsc{Sherpa 2.2.1}~\cite{sherpa} & \textsc{Sherpa 2.2.1}  & NNPDF 3.0 NNLO  & \textsc{Sherpa} default   \\
+& (\textsc{MG5\_aMC}) & (\textsc{Pythia} 8) &  \\
+$\ttbar (Z/\gamma^*)$ & \textsc{MG5\_aMC} & \textsc{Pythia} 8 & NNPDF 3.0 NLO & A14  \\
+&&& /2.3 LO \\
+& (\textsc{Sherpa}) & (\textsc{Sherpa}) &  \\
+$t (Z/\gamma^*)$ & \textsc{MG5\_aMC} & \textsc{Pythia} 8  & CTEQ6L1 & Perugia2012 \cite{perugia}  \\
+$t W (Z/\gamma^*)$ & \textsc{MG5\_aMC} & \textsc{Pythia} 8 & NNPDF 2.3 LO  & A14  \\
+$t\bar t t$, $t\bar t t\bar t$ & \textsc{MG5\_aMC} & \textsc{Pythia} 8 & NNPDF 2.3 LO & A14 \\
+$t\bar t W^+ W^-$ & \textsc{MG5\_aMC} & \textsc{Pythia} 8 & NNPDF 2.3 LO & A14  \\
+$\ttbar$ & \textsc{Powheg-BOX} \cite{powhegtt} & \textsc{Pythia} 8 & CT10/CTEQ6L1 & Perugia2012  \\
+$\ttbar\gamma$ & \textsc{MG5\_aMC} & \textsc{Pythia} 8 & NNPDF 2.3 LO & A14  \\
+$s$-, $t$-channel, & \textsc{Powheg-BOX} \cite{powhegstp,powhegstp2} & \textsc{Pythia} 6 & CT10 & Perugia2012   \\
+ $Wt$ single top & & & /CTEQ6L1 \\
+$VV$, $qqVV$, & \textsc{Sherpa} 2.2.2 \cite{sherpa} & \textsc{Sherpa} & NNPDF 3.0 NNLO & \textsc{Sherpa} default  \\
+$VVV$ & & & \\
+$Z \to \ell^+\ell^-$ & \textsc{Sherpa} 2.2 & \textsc{Sherpa} & NNPDF 3.0 NLO & \textsc{Sherpa} default \\
+%$W \to \ell\nu$ & \textsc{Sherpa} & \textsc{Sherpa} & CT10 & \textsc{Sherpa} default \\
+\hline\hline
+\end{tabular}
+}
+\caption{\label{tab:mcconfig} The configurations used for event generation of signal and background processes. 
+If only one parton distribution function (PDF) is shown, the same one is used for both the matrix element (ME) and parton shower generators; 
+if two are shown, the first is used for the matrix element calculation and the second for the parton shower.  ``V'' refers to production of 
+an electroweak boson ($W$ or $Z/\gamma^*$).  ``Tune'' refers to the underlying-event tune of the parton shower generator. ``\textsc{MG5\_aMC}'' 
+refers to \textsc{MadGraph5\_aMC@NLO} 2.2.1~\cite{Alwall:2014hca}; ``\textsc{Pythia} 6'' refers to version 6.427~\cite{Pythia6}; ``\textsc{Pythia} 8'' 
+refers to version 8.2~\cite{Pythia8}; ``\textsc{Herwig++}'' refers to version 2.7~\cite{Bahr:2008pv}.  Samples using \textsc{Pythia} 6 or \textsc{Pythia} 8  
+have heavy flavour hadron decays modelled by \textsc{EvtGen} 1.2.0~\cite{Lange:2001uf}.  All samples include leading-logarithm photon emission, either modelled 
+by the parton shower generator or by \textsc{PHOTOS}~\cite{Golonka:2005pn}.}
+\end{center}
+\end{table}
+
