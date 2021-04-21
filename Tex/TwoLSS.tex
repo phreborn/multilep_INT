@@ -385,3 +385,197 @@ The dashed bands represent the total (statistical + systematic) uncertainty of t
  the sample by using the truth information.\label{fig:clMC}} 
 \end{figure}
 
+Tables and Plots need to be updated.
+\subsection{Lepton definition}
+The selection of lepton use the official working point of identification and isolation. All baseline leptons are classified into the tight and loose category, the loose leptons are used for fake background estimation. The way to choose the optimized working point is to scan the significance from a set of possible combinations.\\
+
+Electrons are reconstructed by matching the energy deposits from the EM calorimrter to the track in the inner detector. LHLoose and LHTight identification working point are used for loose and tight electron respectively. They are required to have $p_T$>20\GeV and $|\eta|<2.5$, the electron within the transition region between barrel and endcap electromagnetic calorimeter, $1.37<|\eta|<1.52$ are vetoed. To reduce the non-prompt electron contribution, cuts on the transverse parameter significance $d_0$ and longitudinal impact parameter $Z_0$ are applied to ensure that the electron originates from a primary vertex.\\
+Muons are reconstructed by using the information of Muon spectrometer and the Inner detector. Muon candidates are selected with $p_T>20GeV$ and $|\eta|<2.5$. They are required to pass the Loose and Medium identification workinf point for loose and tight muons. The impact parameter cut remain the same as electron but transverse parameter significance cut is more tight than electrons.\\
+Further tight selections are required to supress non-prompt and fake background entering into signal region. PLVTight, recommended by the Isolation and Fake Forum group, is applied. In addition, electrons candidates should pass a charge misidentification BDT working point to reduce charge flip background contribution. Furthermore, the photon conversion background is not negligible in this analysis, electrons are required to fullfill the ambiguity bit selection.\\
+The lepton definition of loose and tight categories are summarized in Table\ref{tab:lepton_selection}.
+\begin{table}[h!]
+ \begin{center}
+   \begin{tabular}{cc}
+     \toprule
+              &  \\
+     \midrule
+      $\mu$              & \verb!HLT_mu26_ivarmedium, HLT_mu50!	\\
+     \multirow{2}*{$e$}  & \verb!HLT_e26_lhtight_nod0_ivarloose, HLT_e60_lhmedium_nod0,! \\
+                         & \verb!HLT_e140_lhloose_nod0!	\\
+     \bottomrule
+   \end{tabular}
+   \caption{\label{tab:lepton_selection}}
+ \end{center}
+\end{table}
+
+
+\subsection{Event selection}
+\label{sec:EventSelection}
+The same charged leptons events are split into three channels according to the lepton flavors: $e^{\pm}e^{\pm}$,$\mu^{\pm}\mu^{\pm}$ and $e^{\pm}\mu^{\pm}$. The two leptons are required to pass tight lepton requirement listed in Table. Both letptons must satisfy transverse momentum $p_T>20GeV$ and their invariant mass $m_{ll}>15GeV$.An dditional invariant mass Z-veto is applied for two electrons channel only to remove charge mis-identification(QmisID) events. There must be no $\tau_had$ candidates in the event. Events must have at least 3 jet and no b-jet with $70\%$ b-tagging efficiency. 
+The cutflow for non resonant signal, $VV$ , $ttbar$ and $Wjets$ processes are presented in Table.	
+\subsection{Background estimation}
+After pre-selection the background source for 2LSS channel can be classified into to two categories. The irreducible background are events where all candidates are prompt leptons or are decayed from $\tau$. The reducible background where events at least one of the candidate leptons is not a prompt lepton consists of charge misidentified leptons and fake leptons. In the first category, the prompt leptons are mainly from diboson process, $WZ,W^{\pm}W^{\pm}$, $tV,ttV,t\bar{t}H$ and $VH$, where $V$ stands for $W$ or $Z$ bosons. Those ingredient are illustrated in Figure, the discrepancy between data and pure MC simulation indicates that QmisID and fakes leptons are not well modeled by MC, so data-driven estimations are needed to describle this two background.
+
+\subsubsection{Charge mis-identified background}
+
+For the SS2L channel, prompt background events from Z+jets and $t\bar{t}$ with two opposite-charge same flavour leptons can pass tight selection due to charge flip. The misidentification of the muon charge-sign is not considered in this study, because the track curvature are measured with the help of muon spectrometer resulting in negligible muuon QmisID rate, generally below $10^{-5}$.\\
+There are two sources contributing to electron QmisID. The most likely mechanism of electron QmisID is hard Bremsstrahlung process ($e^{\pm} \rightarrow e^{\pm} \gamma^{*} \rightarrow e^{\pm} e^{+} e^{-}$). When an electron emits bremsssstrahlung, then the radiated photon converts into $e^+e^-$ pair because of interations with detector material. The energy deposits in the calorimeters may be reconstructed by matching the track of the opposite-sign electron. Since the Bremsstrahlung process depends on the amount of traversed detector material, the $|\eta|$ dependence on the QmisID rate would be considered. Charge fliped events could also arise from measurement error of the electron track curvature. This effect is more significant for electrons with high momenta or at large pesudorapidites, thus the $p_T$ dependence would also be considered.\\
+The MC simulation on QmisID are not fully realiable due to the complicated processes with detector materials. The QmisID rates  are esimated using a data-driven method based on a maximum likelihood technique. The likelihood fit is done on $Z ->ee$ data sample, events around $Z$ peak are categorized into same-sign electron pair(SS) or opposite-sign pair(OS). The contribution from other small background are subtracted from the side-band data. The number of same-sign electron pair ($N_{SS}$) and number of opposite-sign electron pair($N_{OS}$) are the input of this fit. The probability to observe same-sign pairs follows a Possion statistic, write as 
+\begin{equation}
+f\left(N_{\mathrm{SS}}^{i j} ; \hat{N}_{\mathrm{SS}}^{i j}\left(\varepsilon_{i}, \varepsilon_{j}\right)\right)=\frac{\lambda^{N_{\mathrm{SS}}^{i j}} \mathrm{e}^{-\hat{N}_{\mathrm{SS}}^{i j}\left(\varepsilon_{i}, \varepsilon_{j}\right)}}{N_{\mathrm{SS}}^{i j} !}
+\end{equation}
+
+Where $\varepsilon_{i}$ and $\varepsilon_{j}$ represent the QmisID rates for each of two electrons in bin$(i,j)$, $N_SC^{i j}$ is the number of same-sign pairs,$\hat{N}_{\mathrm{SS}}^{i j}\left(\varepsilon_{i}, \varepsilon_{j}\right) = N^{ij}(\varepsilon_{i}(1-\varepsilon_{j})+\varepsilon_{j}(1-\varepsilon_{i}))$ is the expected number of same-sign events. The expected number of QmisID events $\hat{N}_{\mathrm{SS}}^{i j}\left(\varepsilon_{i}, \varepsilon_{j}\right)$ therefor can be computed by measuring the number of opposite-sign events $N_{OS}$ and QmisID rates in $e^{\pm}e^{\pm}$ and $e^{\pm}\mu^{\pm}$ channels,
+\begin{equation}
+\hat{N}_{\mathrm{SS}}=\frac{\varepsilon_{i}+\varepsilon_{j}-2 \varepsilon_{i} \varepsilon_{j}}{1-\left(\varepsilon_{i}+\varepsilon_{j}-2 \varepsilon_{i} \varepsilon_{j}\right)} N_{\mathrm{OS}} \quad \text { and } \quad \hat{N}_{\mathrm{SS}}=\frac{\varepsilon_{i}}{1-\varepsilon_{i}} N_{\mathrm{OS}}
+\end{equation}
+
+The negative log likelihood used to determine the QmisID rates is constructed as 
+\begin{equation}
+-\ln L\left(\varepsilon \mid N_{S S}, N\right)=\sum_{i, j} \ln \left[N^{i j}\left(\varepsilon_{i}(1-\varepsilon_{j})+\varepsilon_{j}(1- \varepsilon_{i})\right)\right] N_{S S}^{i j}-N^{i j}\left(\varepsilon_{i}(1-\varepsilon_{j})+\varepsilon_{j}(1- \varepsilon_{i})\right)
+ \end{equation}
+The QmiID rate are parameterized as a function of electron $p_T$ and $|\eta|$. The binnings scheme are designed as [10,60],[60,90],[90,130],[130,1000] in electron $p_T$ and [0,0.6],[0.6,1.1],[1.1,1.37][1.52,1.7],[1.7,2],[2,2.5]. The events are required that two tight leptons pass pre-selection with an invariant mass window, the Z-peak is obtained by a Gaussian fit, then $\pm4\sigma$ around the mean value is defined as the $m_Z$ window. In terms of background subtraction the side-bands region are defined by $\pm4\sigma$ width for each side of $m_Z$ window. Since the invariant mass spectra of two same-sign electrons is shifted comparing with opposite-sign electrons, the $m_Z$ window and side-bands are used differently for this two case. To increse the statistic of the tight-electrons, anti-tight electrons are tested in this estimation. As shown in Figure \ref{fig:qmisid_mll}, no significant difference is found for different combinition of tight and an-tight electron pairs. From the fit the definitions of the $m_Z$ window are listed in table
+\begin{figure}[!htb]
+\centering
+\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
+\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
+\quad 
+\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
+\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
+\caption{
+}
+\label{fig:qmisid_mll}
+\end{figure}
+
+To validate the likelihood method used to determine QmisID rates, a closure test is done by comparing the QmisID rates derived from Z+jets simulation with the rates using truth information. There is no big disagreement between the two approaches, as the comparion plots shown in figure.
+
+
+Three sources of systematic uncertainties are considered for QmisID background esimation:
+\begin{itemize}
+\item The statistical uncertainty in each $p_T-\eta$ bins due to the statistial size of data site in control regions.
+\item The difference between the rates measured by likelihood method and the rates derieved from truth matched method.
+\item Background subtraction uncertainties. The variation of the rates with the definition of the $m_Z$ window by 1 $\sigma$ difference is regarded as uncertainty.
+\end{itemize}
+
+\subsubsection{Non-prompt lepton background}{}
+
+The fake leptons are important background in 2LSS channel. Events originate from non-prompt and fake backgrounds can also contribute to same-sign lepton final state. In this document non-prompt and fake leptons form the fake background. There are several sources of non-prompt and fake leptons.\\
+	Non-prompt leptons arise mainly from  heavy flavor decays, they are real leptons but not produced from primary interaction point. In addition to non-prompt leptons, hadronic jet are misidentified as prompt charged leptons, lectrons from photon conversion, making the fake leptons consist of multiple components.\\ 
+	Simulating each process which leads to a fake lepton is not reliable and precise in MC samples, leading to a challenging estimation on fake background. For this reason, data-driven method is necessary to make a reasonable fake estmation. In this analysis, $t\bar{t}$  and $W+jets$ are main processes providing fake lepton. The fake factor method is used to discribe fake lepton background, both two leptons originating from fakes are not considered yet.\\
+	The number of prompt leptons is esitmated using both data and MC simulation on a fake en-riched control region. The control region is constructed by same-sign events in which one lepton pass the tight selection and another lepton so-called anti-tight lepton fails the tight selection. In this method, two fake factors ralated the events from fake en-riched region to the background in signal region are derieved. The method assumes that the fake factor is independent of jet multiplicity. The fake factor is defined as the ratio of number of same-sign events with two tight leptons between same-sign events with one tight lepton and one anti-tight lepton, as below
+\begin{equation}
+\theta_{\ell}=\frac{N_{\ell \ell}}{N_{\ell \ell}}
+\end{equation}
+where $\ell$ the tight lepton e or $\mu$ and $\ell$ the anti-tight lepton e or $\mu$. In the signal region, the fake electrons are dominated by jets misidentified as electrons, following the photon conversions and non-prompt heavy flavour decay products. A check on fake lepton componsion is preformed in low jet multiplicity and high jet multiplicity region. The fake componsion, consist of External Conversion, internal conversion, b decay, c or other decay, and rest unknown, are classified by TruthClassifier Tool. A non QmisID origination selection is required to avoid the contamination from charge fliped electrons. Fake composition	looks similar for low jet multiplicity control region and high jet multiplicity signal region.
+
+The fake factors for \e and $\mu$ can be written as 
+\begin{equation}
+\theta_{e}\left(1 \leq N_{\text {jet }} \leq 2\right)=\frac{N_{e e}^{\text {data }}-N_{e e}^{\text {prompt }}-N_{e e}^{V \gamma}-N_{e e}^{\text {QmisID }}}{N_{e \phi}^{\text {data }}-N_{e \phi}^{\text {prompt }}-N_{e \phi}^{V \gamma}-N_{e \phi}^{\text {QmisID MC }}}
+\end{equation}
+
+\begin{equation}
+\theta_{e}\left(1 \leq N_{\text {jet }} \leq 2\right)=\frac{N_{e e}^{\text {data }}-N_{e e}^{\text {prompt }}-N_{e e}^{V \gamma}-N_{e e}^{\text {QmisID }}}{N_{e \phi}^{\text {data }}-N_{e \phi}^{\text {prompt }}-N_{e \phi}^{V \gamma}-N_{e \phi}^{\text {QmisID MC }}}
+\end{equation}
+
+In both denominator and numerator region, the contributions from other background, composed of prompt same-sign leptons from VV,VVV,VH,tV,ttV and ttH processes, V$\gam$ process and QmisID process, are subtracted. $N^{prompt}$ the  background from prompt sames-sign lepton pair and V$\gam$ backgound are estimated using MC simulation. For fake factor of electron, $N^{QmisID}$ in the numerator is estimated from opposite-sign events computing with correspondingQmisID rates as discussed in section. In the denominator, $N^{QmisID}$ is computed from MC events in which one electron is required to be a real electron.\\
+
+The fake factors are measured in a control region. A b-veto is applied to suppress fakes from $t\bar{t}$ events. Due to the fact that the sub-leading lepton is an anti-tight lepton in most cases, thus for numberator events, the sub-leading lepton is chosen to be the fake candidate. While for one tight lepton and one anti-tight lrpton in denominator, no subleading lepton should match to anti-tight selection. It was found that an inclusive fake factor can't describle the distribution of lepton kinematics, $\eta$, $\pt$ very well. A $p_T$ dependence fake factor therefore is raised to be implemented in each $p_T$ bins. The $p_T$ are divided into 4 bins, [20,40],[40,60],[60,100],[100,1000]. The \eta and $p_T$ dependent fake factor is presented in figure.\\
+
+Note: the result is based on $p_T$ dependent fake factor only, will update to $|\eta|-pt$ 2D-space fakes estimationlater.\\
+Each kinds of subtracted background and observed data in low jet multiplicity region is listed in Table and Table for electrons and muons. To measure the number of fakes in signal region, following equations are used,
+
+\begin{equation}
+N_{e e}^{\text {fakes }}\left(N_{\text {jet }} \geq 3\right)=\left(N_{e \phi}^{\text {data }}-N_{e \phi}^{\text {promptSS }}-N_{e \phi}^{V \gamma}-N_{e \phi}^{\text {QmisID MC }}\right)\left(N_{\text {jet }} \geq 3\right) \times \theta_{e}
+\end{equation}
+
+\begin{equation}
+N_{\mu \mu}^{\text {fakes }}\left(N_{\text {jet }} \geq 3\right)=\left(N_{\mu \mu}^{\text {data }}-N_{\mu \mu}^{\text {promptSS }}-N_{\mu \not h}^{V \gamma}\right)\left(N_{\text {jet }} \geq 3\right) \times \theta_{\mu}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+N_{e \mu}^{\text {fakes }}\left(N_{\text {jet }} \geq 3\right.&)=\left(N_{e \mu}-N_{e \mu}^{\text {promptSS }}-N_{e \mu^{\mu}}^{V \gamma}-N_{e \mu}^{\text {QmisID }}\right)\left(N_{\text {jet }} \geq 3\right) \times \theta_{\mu} \\
+	+&\left(N_{\phi \mu}-N_{\phi \mu}^{\text {promptSS }}-N_{\phi \mu}^{V \gamma}-N_{\phi \mu}^{\text {QmisID MC }}\right)\left(N_{\text {jet }} \geq 3\right) \times \theta_{e}
+\end{aligned}
+\end{equation}
+
+The number of predicted fakes after pre-selections in $N_{jet}==3$ region is shown in table, the uncertainties hereare stat-only. 
+\subsubsection{Fake background systematics uncertainties}
+Following sources of systematic uncertainties on estimated fake factors are presented
+
+\begin{itemize}
+\item The statistical uncertainty on fake factors $\theta_e$ and $\theta_{\mu}$. 
+\item The uncertainty of QmisID estimation: the full uncertainty on this background is propagated to the fake factor measuremnet.
+\item The systematics on MC modeling 
+\item The uncertainty on jet multiplicity extrapolation: the fake factor is measured from low jet multiplicity region and is applyed in high jet multiplicity region. The assumption of a stable fake factor with respect to $N_jet$ may not always true. To take this difference into account the fake from MC(require two tight lepton in ttbar samples) are compared with the fakes estimated by fake factor method. 
+\item sample dependence
+\end{itemize}
+\subsection{Background validation}
+By means of data-driven method the QmisID, fake background and irreducible background are compared with the number of observed data in figure. The event yield at pre-selection level is presented in table for different flavor channels. In general a good agreement is observed between data and total estimated backgrounds within uncertainties, 
+
+\subsection{Signal optimization}
+\subsection{Signal topology}
+
+The signal of 2LSS channel consist of two same sign leptons, with multiple jets and $E_T^{miss}$. From the truth level kinematics distribution of di-higgs, this two higgs bosons tends to flight in the opposite direction, as shown in figure. Afterwards two higgs bosons decay to W-W pair, Z-Z pair or tau-tau pair indenpendently. Thus it's challenging to separate multiple signals with different kinematic properties, classification work preformed by multivariate analysis technique are motivated to improve analysis sensitively.\\
+
+
+\subsection{Signal region using MVA}
+
+
+The following varibles are used for MVA optimization process.\\
+\begin{itemize}
+\item $M_l1j$ invariant mass of leading lepton and its clostest jet
+\item $M_21j$ invariant mass of sub-leading lepton and its clostest jet
+\item $\Delta R(l_0,j)$ $\Delta R$ distance of leading lepton and its clostest jet
+\item $\Delta R(l_1,j)$ $\Delta R$ distance of sub-leading lepton and its clostest jet
+\item $m_ll$ invariant mass of two same-sign leptons.
+\item $m_{all}$ invariant mass of all selected objects.
+\item $\eta$ of two leptons, $\eta_{l0},\eta_{l1},max(\eta_{l1},\eta_{l2}),$ 
+\item $\Delta R(l0,l1)$ $\Delta R$ distance of two same-sign leptons.
+\item HT the scalar sum of $p_T$ of all object. 
+\item three lepton channels with different flavour, $e^{\pm}e^{\pm,\mu^{\pm}\mu^{\pm},e^{\pm}\mu^{\pm}}$
+\item number of jet.
+\item $p_T$ of subleading jet
+\end{itemize}
+
+The input variables that have the highest separation power are listed in Table\ref{tab:separation_power} \\
+\begin{table}[h!]
+ \begin{center}
+   \begin{tabular}{cc}
+     \toprule
+              &  \\
+     \midrule
+      m_l1j              & 2.13e-1\\
+     \midrule       
+      mindR_l1j          & 1.78e-1\\
+     \midrule       
+      mindR_l1j          & 1.78e-1\\
+     \midrule       
+      mindR_l1j          & 1.78e-1\\
+     \midrule       
+      mindR_l1j          & 1.78e-1\\
+     \midrule       
+      mindR_l1j          & 1.78e-1\\
+     \midrule       
+      mindR_l1j          & 1.78e-1\\
+     \midrule       
+      mindR_l1j          & 1.78e-1\\
+     \midrule       
+      mindR_l1j          & 1.78e-1\\
+     \midrule       
+      mindR_l1j          & 1.78e-1\\
+     \bottomrule
+   \end{tabular}
+   \caption{\label{tab:separation_power}}
+ \end{center}
+\end{table}
+Figure show the distributions of the input variables for signal and estimated background where QmisID and fake leptons are modelled by data-driven methods discussed in previous section\\
+
+Before the training procedure a comparsion of fakes simulated by ttbar and W+jet MC(MC fakes), with fakes estimated by fake factor method(DD fakes) is preformed. The motivation of this check is to avoid problematic negetive events weight during training. The shape distrbution for main discriminate varibles are presented in Figure. Generally the agreement is good expect seveal bins contaning big weight of W+jets events. The scale factor of normalizing MC fakes yields to DD yields is found to be 0.974.\\
+Signal samples are events within two tight leptons pass all events selection, the background samples includes the main background, $VV$, $ttbar$ and $Vjet$. Signal and background BDTG response distributions for training and test are shown in Figure. The agreement between the two shape indicates that there is no overtraining.\\
+
+The training model is applied to signal samples and full background samples where QmisID and fake leptons are estimated by data-driven method. The BDTG dicrimination in Figure illustrates that the signal and background events are well separated to two sides.\\
+By scaning the BDTG distribution, it is found that BDTG cut at 0.78 gives 0.058 significance in maximum. Considering the BDTG sc as observeble, 
+\subsection{Results}
+The Statistical interpretations are preformed by TRexFitter. The input event yields is listed in Table
+
