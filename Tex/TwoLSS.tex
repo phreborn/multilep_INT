@@ -435,17 +435,17 @@ The negative log likelihood used to determine the QmisID rates is constructed as
 -\ln L\left(\varepsilon \mid N_{S S}, N\right)=\sum_{i, j} \ln \left[N^{i j}\left(\varepsilon_{i}(1-\varepsilon_{j})+\varepsilon_{j}(1- \varepsilon_{i})\right)\right] N_{S S}^{i j}-N^{i j}\left(\varepsilon_{i}(1-\varepsilon_{j})+\varepsilon_{j}(1- \varepsilon_{i})\right)
  \end{equation}
 The QmiID rate are parameterized as a function of electron $p_T$ and $|\eta|$. The binnings scheme are designed as [10,60],[60,90],[90,130],[130,1000] in electron $p_T$ and [0,0.6],[0.6,1.1],[1.1,1.37][1.52,1.7],[1.7,2],[2,2.5]. The events are required that two tight leptons pass pre-selection with an invariant mass window, the Z-peak is obtained by a Gaussian fit, then $\pm4\sigma$ around the mean value is defined as the $m_Z$ window. In terms of background subtraction the side-bands region are defined by $\pm4\sigma$ width for each side of $m_Z$ window. Since the invariant mass spectra of two same-sign electrons is shifted comparing with opposite-sign electrons, the $m_Z$ window and side-bands are used differently for this two case. To increse the statistic of the tight-electrons, anti-tight electrons are tested in this estimation. As shown in Figure \ref{fig:qmisid_mll}, no significant difference is found for different combinition of tight and an-tight electron pairs. From the fit the definitions of the $m_Z$ window are listed in table
-\begin{figure}[!htb]
-\centering
-\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
-\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
-\quad 
-\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
-\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
-\caption{
-}
-\label{fig:qmisid_mll}
-\end{figure}
+%\begin{figure}[!htb]
+%\centering
+%\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
+%\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
+%\quad 
+%\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
+%\subfigure[]{\includegraphics[width=0.4\textwidth]{figures/}}
+%\caption{
+%}
+%\label{fig:qmisid_mll}
+%\end{figure}
 
 To validate the likelihood method used to determine QmisID rates, a closure test is done by comparing the QmisID rates derived from Z+jets simulation with the rates using truth information. There is no big disagreement between the two approaches, as the comparion plots shown in figure.
 
@@ -468,7 +468,7 @@ The fake leptons are important background in 2LSS channel. Events originate from
 \end{equation}
 where $\ell$ the tight lepton e or $\mu$ and $\ell$ the anti-tight lepton e or $\mu$. In the signal region, the fake electrons are dominated by jets misidentified as electrons, following the photon conversions and non-prompt heavy flavour decay products. A check on fake lepton componsion is preformed in low jet multiplicity and high jet multiplicity region. The fake componsion, consist of External Conversion, internal conversion, b decay, c or other decay, and rest unknown, are classified by TruthClassifier Tool. A non QmisID origination selection is required to avoid the contamination from charge fliped electrons. Fake composition	looks similar for low jet multiplicity control region and high jet multiplicity signal region.
 
-The fake factors for \e and $\mu$ can be written as 
+The fake factors for $\ell$ and $\mu$ can be written as 
 \begin{equation}
 \theta_{e}\left(1 \leq N_{\text {jet }} \leq 2\right)=\frac{N_{e e}^{\text {data }}-N_{e e}^{\text {prompt }}-N_{e e}^{V \gamma}-N_{e e}^{\text {QmisID }}}{N_{e \phi}^{\text {data }}-N_{e \phi}^{\text {prompt }}-N_{e \phi}^{V \gamma}-N_{e \phi}^{\text {QmisID MC }}}
 \end{equation}
@@ -479,7 +479,7 @@ The fake factors for \e and $\mu$ can be written as
 
 In both denominator and numerator region, the contributions from other background, composed of prompt same-sign leptons from VV,VVV,VH,tV,ttV and ttH processes, V$\gam$ process and QmisID process, are subtracted. $N^{prompt}$ the  background from prompt sames-sign lepton pair and V$\gam$ backgound are estimated using MC simulation. For fake factor of electron, $N^{QmisID}$ in the numerator is estimated from opposite-sign events computing with correspondingQmisID rates as discussed in section. In the denominator, $N^{QmisID}$ is computed from MC events in which one electron is required to be a real electron.\\
 
-The fake factors are measured in a control region. A b-veto is applied to suppress fakes from $t\bar{t}$ events. Due to the fact that the sub-leading lepton is an anti-tight lepton in most cases, thus for numberator events, the sub-leading lepton is chosen to be the fake candidate. While for one tight lepton and one anti-tight lrpton in denominator, no subleading lepton should match to anti-tight selection. It was found that an inclusive fake factor can't describle the distribution of lepton kinematics, $\eta$, $\pt$ very well. A $p_T$ dependence fake factor therefore is raised to be implemented in each $p_T$ bins. The $p_T$ are divided into 4 bins, [20,40],[40,60],[60,100],[100,1000]. The \eta and $p_T$ dependent fake factor is presented in figure.\\
+The fake factors are measured in a control region. A b-veto is applied to suppress fakes from $t\bar{t}$ events. Due to the fact that the sub-leading lepton is an anti-tight lepton in most cases, thus for numberator events, the sub-leading lepton is chosen to be the fake candidate. While for one tight lepton and one anti-tight lrpton in denominator, no subleading lepton should match to anti-tight selection. It was found that an inclusive fake factor can't describle the distribution of lepton kinematics, $\eta$, $\pt$ very well. A $p_T$ dependence fake factor therefore is raised to be implemented in each $p_T$ bins. The $p_T$ are divided into 4 bins, [20,40],[40,60],[60,100],[100,1000]. The $\eta$ and $p_T$ dependent fake factor is presented in figure.\\
 
 Note: the result is based on $p_T$ dependent fake factor only, will update to $|\eta|-pt$ 2D-space fakes estimationlater.\\
 Each kinds of subtracted background and observed data in low jet multiplicity region is listed in Table and Table for electrons and muons. To measure the number of fakes in signal region, following equations are used,
@@ -545,25 +545,25 @@ The input variables that have the highest separation power are listed in Table\r
      \toprule
               &  \\
      \midrule
-      m_l1j              & 2.13e-1\\
+      $m_l1j$              & 2.13e-1\\
      \midrule       
-      mindR_l1j          & 1.78e-1\\
+      $mindR_l1j$          & 1.78e-1\\
      \midrule       
-      mindR_l1j          & 1.78e-1\\
+      $mindR_l1j$          & 1.78e-1\\
      \midrule       
-      mindR_l1j          & 1.78e-1\\
+      $mindR_l1j$          & 1.78e-1\\
      \midrule       
-      mindR_l1j          & 1.78e-1\\
+      $mindR_l1j$          & 1.78e-1\\
      \midrule       
-      mindR_l1j          & 1.78e-1\\
+      $mindR_l1j$          & 1.78e-1\\
      \midrule       
-      mindR_l1j          & 1.78e-1\\
+      $mindR_l1j$          & 1.78e-1\\
      \midrule       
-      mindR_l1j          & 1.78e-1\\
+      $mindR_l1j$          & 1.78e-1\\
      \midrule       
-      mindR_l1j          & 1.78e-1\\
+      $mindR_l1j$         & 1.78e-1\\
      \midrule       
-      mindR_l1j          & 1.78e-1\\
+      $mindR_l1j$          & 1.78e-1\\
      \bottomrule
    \end{tabular}
    \caption{\label{tab:separation_power}}
