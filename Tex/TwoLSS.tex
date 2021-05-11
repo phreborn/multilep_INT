@@ -579,3 +579,140 @@ By scaning the BDTG distribution, it is found that BDTG cut at 0.78 gives 0.058 
 \subsection{Results}
 The Statistical interpretations are preformed by TRexFitter. The input event yields is listed in Table
 
+\subsection{2$\ell \ell$SS - MVA V2}
+
+%\subsubsection{The strategy}
+In order to define Signal Region, a BDT has been trained. In this MVA
+approach, the strategy is to train 3 specific BDTs, targetting the 3 main
+background processes. In the 2$\mathrm{\ell \ell}$SS channel, these
+backgrounds correspond to diboson, V+jets and ttbar
+productions. Various discriminating 
+variables are used according the targetted background process. Then, the 3 BDT
+outputs are combined into a final discriminant variable using a fourth
+BDT. For each training (of the specific BDTs or the combined one) the MVA
+method is the BDTG. 
+While the combined BDT is used to define the signal region, the
+background specific BDTs can be used to defined background enriched
+regions (Validation Regions and potential Control Regions) targetting
+the 3 leading background seperately.  
+
+\subsubsection{Selections and leptons definition}
+Some preselections have been applied: 
+\begin{itemize}
+    \item 2LSS: 2 leptons same sign
+    \item $\tau$ and bjets VETOS
+    \item 2 $\leq$ Number of jets $\leq$ 7
+    \item Invariant mass of the 2 leptons $\geq$ 12~GeV
+\end{itemize}
+Then the leptons have been defined as: 
+\begin{itemize}
+    \item Tight ID for electrons
+    \item Medium ID for muons
+    \item Transversal momentum $\geq$ 20~GeV
+    \item $\eta$ $\leq$ 2 for electrons
+    \item Prompt lepton veto tight for electrons and muons
+    \item QIDBDT $\geq$ -0.3
+\end{itemize}
+Finally some selections about the trigger decision have been applied, knowing Global Trig decision and Cust Trig match Single Lepton Trigger or Di-Leptons Trigger and the associated Scale Factors. 
+
+\subsubsection{Discriminating variables}
+The variables used as inputs to the various MVAs are listed in the following:
+\begin{itemize}
+    \item $M_{\ell \ell}$: the invariant mass of the di-leptonic system
+    \item $M_{all}$: the invariant mass of all selected objects
+    \item $M_{\ell0 j}$: the invariant mass of the leading and its closest jet
+    \item $M_{\ell1 j}$: the invariant mass of the subleading and its closest jet
+    \item $M_{W0}^T and M_{W1}^T$: the W transverse mass using the
+      leading and the subleading leptons.
+    \item MET : Missing transverse energy 
+    \item $\eta_0$ and $\eta_1$: $\eta$ of the leading and the subleading leptons
+    \item $\Delta \eta$: absolute value of $\eta_0$-$\eta_1$
+    \item Number of jets
+    \item Number of b-tagged jets at a 85\% efficiency: It has
+      been only used for the BDT training specific to ttbar
+      background. In fact, the decay of ttbar will induce a b-quark
+      emission. 
+      This input will be discarded in the futur due to the complexity of
+      using a continous Btagging in association to the b-veto at 77\%
+      applied at the preselection level
+    \item HT: Scalar sum of transversal impulsion for all objects
+    \item $HT_{lep}$: Scalar sum of transversal momentum for leptons
+    \item Dilep\_type: =1 if $\mu \mu$, =2 if $e\mu$ or $\mu e$, =3 if ee
+    \item $\Delta R _{min \ell0 jets}$: Minimum distance between the leading lepton and its closest jet
+    \item $\Delta R _{min \ell1 jets}$: Minimum distance between the subleading lepton and its closest jet
+    \item $\Delta R _{\ell \ell}$: Distance between the leading and the subleading leptons
+    \item Total\_charge: Sum of the charge of the leading and the
+      subleading lepton. The total charge is specific to the VV
+      BDT. In the 2LSS, VV background is mainly due to WZ events.
+     Unlike the HH final state, a charge asymetry is therefore
+     expected in the VV final state (As shown in
+     Figure~\ref{fig:totQ_distri_2LSS}).  
+\end{itemize}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/2LSS/totQ_distri.png}
+    \caption{Total charge distribution with training selection}
+    \label{fig:totQ_distri_2LSS}
+\end{figure}
+ 
+\subsubsection{Specific BDTs}
+The 3 specific BDTs have been trained with the following parameters: 
+\begin{itemize}
+    \item VV vs HH training: 17 variables have been used as input variables. 14,289 events and 300,000 events have been used respectively for signal and diboson background. 
+    \item Vjets vs HH training: 16 variables have been used as input variables. 15,000 events and 15,000 events have been used respectively for signal and V+jets background.
+    \item $\mathrm{t\bar{t}}$ vs HH training: 17 variables have been used as input variables. 14,289 events and 2,900 events have been used respectively for signal and $\mathrm{t\bar{t}}$  background.
+\end{itemize}
+Figures \ref{fig:VV_BDT}, \ref{fig:tt_BDT} and \ref{fig:Vjets_BDT} show the distribution of each resulting output.
+
+\begin{figure}[!h]
+\begin{minipage}[c]{.5\linewidth}
+    \centering
+  \includegraphics[width=\textwidth]{figures/2LSS/VV_BDT.png}
+  \caption{Discriminant output of VV VS HH training}
+  \label{fig:VV_BDT}
+\end{minipage}
+\begin{minipage}[c]{.5\linewidth}
+  \centering
+  \includegraphics[width=\textwidth]{figures/2LSS/tt_BDT.png}
+  \caption{Discriminant output of $\mathrm{t\bar{t}}$ VS HH training}
+  \label{fig:tt_BDT}
+\end{minipage}
+\begin{minipage}[c]{\linewidth} 
+  \centering
+  \includegraphics[width=.5\textwidth]{figures/2LSS/Vjets_BDT.png}
+  \caption{Discriminant output of V+jets VS HH training}
+  \label{fig:Vjets_BDT}
+\end{minipage}
+\end{figure}
+
+\subsubsection{The Combined BDT}
+Then, a new final discriminating variable was obtained by training a
+new BDT that combines the 3 previous specific BDTs. For the training,
+only the 3 main backgrounds were considered, using the MC
+simulation. The 3 specific BDTs have been chosen as input variables,
+14,289 events and 317,900 events was considered repectivelly for
+signal and backgrounds. The final discriminant is shown on Figure~\ref{fig:BDT}.\\  
+Finally, in order to quantify the sensitivity of the signal region
+defined by this MVA, a full fit has been performed using TRExFitter,
+including all the MC based backgrounds. The fit of the Asimov dataset
+leads  to a limit $\mu_{95\%}$ equals to 29.9 (stat only) using 
+the BDT shape.
+As a cross-check, considering the invariant mass shape
+(cf. Figure~\ref{fig:Mll_BDT}) and applying a selection on the BDT
+(BDT $\geq$ 0.787), the limit has been settled at 34.6 (stat only).
+
+\begin{figure}[!h]
+\begin{minipage}[c]{.5\linewidth}
+  \centering
+  \includegraphics[width=\textwidth]{figures/2LSS/HH_l20tau_NewDef2.png}
+  \caption{Final BDT distribution}
+  \label{fig:BDT}
+\end{minipage}
+\begin{minipage}[c]{.5\linewidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/2LSS/HH_l20tau_NewDef_postFit.png}
+    \caption{Mll distribution, BDT $\geq$ 0.787}
+    \label{fig:Mll_BDT}
+\end{minipage}
+\end{figure}
