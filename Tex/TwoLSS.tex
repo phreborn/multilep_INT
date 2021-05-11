@@ -385,7 +385,154 @@ The dashed bands represent the total (statistical + systematic) uncertainty of t
  the sample by using the truth information.\label{fig:clMC}} 
 \end{figure}
 
-Tables and Plots need to be updated.
+\clearpage
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Non-prompt lepton estimate with Template Fit Method}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The non-prompt light lepton background has several origins:
+leptons from semi-leptonic heavy-flavour decays, light decays and photon
+conversions. A semi-data-driven method, described in ANA-HIGG-2018-05-INT1,
+called template method is used to estimate this background.
+Within this method, the normalisation of the different fakes contribution
+templates, are left free-floating in a fit to data.
+The templates are given by dedicated Monte Carlo simulations of all the
+processes contributing to 
+non-prompt  lepton background and these
+normalisation factors are used to correct the fakes Monte Carlo
+estimates. 
+
+The main contribution to non-prompt lepton background comes from \ttbar,
+and $V+jets$. Based on the truth classification of events containing a non-prompt lepton, following
+main contributions are distinguished, and free-floating normalisation factors
+($NF$) is assigned to each of them: 
+
+\begin{itemize}
+\item $NF^{HF}_{e}$: normalisation factor applied to events with one
+  non-prompt electron from B decay, C decay or light hadron  (dominated by B
+  decay).  
+\item $NF^{HF}_{\mu}$: normalisation factor applied to events with one
+ non-prompt muon from B decay, C decay or light hadron  (dominated by B
+  decay).
+\item $NF^{internal CO}$: normalisation factor applied to photon conversion
+  ($\gamma * \rightarrow \ell \ell$). It arrises mainly from $t\bar{t}\gamma$
+  and $V\gamma$ events.
+\item $NF^{external CO}_{e}$: normalisation factor applied to events with one
+  fake electron from photon conversion due to interactions with detector material.
+\end{itemize}
+
+In this iteration, light-flavor leptons are combined with heavy flavor ones.
+The classification of Monte Carlo samples in the aforementioned categories is
+based on their truth origin (based on the MCTruthClassifier) as follows: 
+
+\begin{itemize}
+\item Prompt leptons: leptons (truth origin = 10), Bremsstrahlung radiation (truth origin = 5, parent truth is the same particle and truth type = 2) or rare Top decay (muon truth origin = 0).
+\item Conversion: Conversion photon fakes to electron (truth origin = 5, except Bremsstrahlung radiation)
+   \begin{itemize}
+    \item Internal Conversion: electron with decay radius below 20mm
+    \item External Conversion: electron with decay radius larger than 20mm
+   \end{itemize}
+\item B decay: non-prompt leptons from B decay (truth origin = 26, 29, 33);
+\item C decay: non-prompt leptons from C decay (truth origin = 25, 27, 28, 32)
+\item Other decay: leptons from light quarks or other processes.
+\end{itemize}
+
+Monte Carlo events containing a charge-flip electron are vetoed, since they
+are estimated with data-driven methods. The vetoed events are those containing
+either a charge flipped isolated electron, or a background electron with
+opposite charge compared to the prompt mother electron. 
+
+While the analysis is blinded, the templates are fitted to the data using
+control regions only. At this stage, the NFs extracted from the blinded fit
+and inserted into the full fit model in order to obtain the expected analysis
+sensitivity from Asimov data set. 
+After unblinding the normalisation factors are derived
+in one simultaneous fit including the signal region.
+
+Four dedicated control regions have been developed in order
+to improve the constraint on the NFs of the internal and external conversions,
+and decrease the correlation between these two mainly in the electron
+channels. Events with same-sign di-leptons and at least one b-tagged jets are used to
+define control regions regions that are orthogonal to the signal region
+and that contain all the variety of non-prompt leptons. These regions are used
+to contraints the modeling of the various non-prompt leptons in the Monte Carlo.
+  
+The internal conversion and external conversion control regions are defined
+based on three electron variables. The variables are: the conversion
+radius, the invariant mass of the track associated to the electron and its
+closest track (originating from the conversion) calculated at conversion
+vertex ($m_{trk-trk, CV}$), and the same invariant mass calculated at the
+primary vertex ($m_{trk-trk, PV}$).  
+
+The following definitions are also considered:
+
+\begin{itemize}
+\item External conversion candidate: a conversion vertex is found with radius $r>20$mm, and the mass of the vertex is 0$<$m(trk-trk)$ at CV<$100MeV 
+\item Internal conversion candidate: not an External conversion candidate and 0$<$m(trk-trk)$ at PV<$100MeV 
+\end{itemize}
+
+The following distributions are exploited to best discriminate among the NFs
+in the simultaneous template fit:  
+
+\begin{itemize}
+\item  $\Delta R_{ll}$ in $\mu e + ee$ channel with exactly 1 b-jet, to estimate $NF^{HF}_{e}$
+\item  $H_T$ in $e\mu+\mu\mu$ channel, to estimate $NF^{HF}_{\mu}$% and decrease its correlation with $NF_{t\bar{t}W}$
+\end{itemize}
+
+The four Control Regions are shown on Figures\,\ref{fig:TFPreFit}
+and\,\ref{fig:TFPostFit} prior and after the fit to data while the measured NFs
+are shown on Figure\,\ref{fig:TFNF}.
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=.45\textwidth]{figures/2LSS/l20tau_CRA_IntCO.png}
+\includegraphics[width=.45\textwidth]{figures/2LSS/l20tau_CRB_EXTCO.png}
+\includegraphics[width=.45\textwidth]{figures/2LSS/l20tau_DRll01_1b_meee.png}
+\includegraphics[width=.45\textwidth]{figures/2LSS/l20tau_HT_lep_emmm.png}
+\end{center}
+\caption{
+  Pre-fit plots of the control regions.
+\label{fig:TFPreFit} }
+\end{figure}
+
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=.45\textwidth]{figures/2LSS/l20tau_CRA_IntCO_postFit.png}
+\includegraphics[width=.45\textwidth]{figures/2LSS/l20tau_CRB_EXTCO_postFit.png}
+\includegraphics[width=.45\textwidth]{figures/2LSS/l20tau_DRll01_1b_meee_postFit.png}
+\includegraphics[width=.45\textwidth]{figures/2LSS/l20tau_HT_lep_emmm_postFit.png}
+\end{center}
+\caption{
+  Posfit plots of the control regions.
+\label{fig:TFPostFit} }
+\end{figure}
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[width=.7\textwidth]{figures/2LSS/NormFactors.png}
+\end{center}
+\caption{
+Normalisation factors obtained after the fit to data using the CR.
+\label{fig:TFNF} }
+\end{figure}
+
+The main uncertainty corresponds to the statistical uncertainty on the NFs that
+varies from 10\% to 30\%. Since the Template Fit is relying on MC, there are
+three main types of systematics associated: 
+
+\begin{itemize}
+\item $t\bar{t}$ modelling systematics
+\item $t\bar{t}W$ modelling systematics
+\item template systematics
+\end{itemize}
+
+
+
+
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%Tables and Plots need to be updated.
 \subsection{Lepton definition}
 The selection of lepton use the official working point of identification and isolation. All baseline leptons are classified into the tight and loose category, the loose leptons are used for fake background estimation. The way to choose the optimized working point is to scan the significance from a set of possible combinations.\\
 
@@ -579,7 +726,8 @@ By scaning the BDTG distribution, it is found that BDTG cut at 0.78 gives 0.058 
 \subsection{Results}
 The Statistical interpretations are preformed by TRexFitter. The input event yields is listed in Table
 
-\subsection{2$\ell \ell$SS - MVA V2}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Signal region using MVA - V2}
 
 %\subsubsection{The strategy}
 In order to define Signal Region, a BDT has been trained. In this MVA
